@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>Console_Test_Enviroment</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="PeterRG">
+      <HintPath>..\PeterRG\bin\Release\PeterRG.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
