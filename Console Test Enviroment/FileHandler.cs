@@ -19,4 +19,13 @@ namespace Console_Test_Enviroment
         }
     }
 
+    class MultiLineDataOptions
+    {
+        public int numDataPoints { private set; get; }
+
+        public MultiLineDataOptions(int dataPoints)
+        {
+            this.numDataPoints = numDataPoints;
+        }
+    }
 }
