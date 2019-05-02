@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Linq;
+using PeterRG.CustomConsole;
 
 namespace PeterRG.PeterRGConsole
 {
