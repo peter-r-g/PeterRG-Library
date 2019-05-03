@@ -22,39 +22,34 @@ namespace PeterRG.CustomConsole
 
         public ConsoleUI()
         {
-            // Create the form objects
             consoleWindow = new Form();
             consoleLog = new RichTextBox();
             consoleInput = new TextBox();
             consoleSendInput = new Button();
             consoleWindow.SuspendLayout();
 
-            // Setup console log rich text box
             consoleLog.Name = "consoleLog";
             consoleLog.ClientSize = new Size(786, 400);
             consoleLog.Left = 5;
             consoleLog.Top = 5;
             consoleLog.ReadOnly = true;
-            //consoleLog.TextChanged += ConsoleLogTextChanged;
+            consoleLog.TextChanged += ConsoleLogTextChanged;
 
-            // Setup the console input text box
             consoleInput.Name = "consoleInput";
             consoleInput.ClientSize = new Size(710, 30);
             consoleInput.Top = 420;
             consoleInput.Left = 5;
             consoleInput.TabIndex = 0;
-            //consoleInput.KeyUp += ConsoleInputKeyUp;
+            consoleInput.KeyUp += ConsoleInputKeyUp;
 
-            // Setup the console send input button
             consoleSendInput.Name = "sendConsoleInput";
             consoleSendInput.ClientSize = new Size(70, 20);
             consoleSendInput.Top = 420;
             consoleSendInput.Left = 725;
             consoleSendInput.Text = "Send";
             consoleSendInput.TabIndex = 1;
-            //consoleSendInput.Click += SendConsoleInputClicked;
+            consoleSendInput.Click += SendConsoleInputClicked;
 
-            // Setup the console window
             consoleWindow.Name = "consoleWindow";
             consoleWindow.ClientSize = new Size(800, 450);
             consoleWindow.Controls.Add(consoleLog);
@@ -68,6 +63,66 @@ namespace PeterRG.CustomConsole
             consoleWindow.PerformLayout();
             consoleWindow.Show();
             consoleInput.Focus();
+        }
+
+        private void ConsoleLogTextChanged(object sender, EventArgs args)
+        {
+            if (autoScrollConsoleLog)
+            {
+                consoleLog.SelectionStart = consoleLog.Text.Length;
+                consoleLog.ScrollToCaret();
+            }
+
+            if (consoleLog.Lines.Length > consoleLogMaxLines)
+                consoleLog.Lines = (string[])consoleLog.Lines.Skip(1);
+        }
+
+        private void ConsoleInputKeyUp(object sender, KeyEventArgs args)
+        {
+            if (args.KeyCode == Keys.Up)
+            {
+                if (inputIndex < inputHistory.Count)
+                {
+                    inputIndex++;
+                    consoleInput.Text = inputHistory[inputIndex - 1];
+                }
+            }
+            else if (args.KeyCode == Keys.Down)
+            {
+                if (inputIndex > 1)
+                {
+                    inputIndex--;
+                    consoleInput.Text = inputHistory[inputIndex - 1];
+                }
+            }
+        }
+
+        private void SendConsoleInputClicked(object sender, EventArgs args)
+        {
+            string input = GetConsoleInput();
+
+            if (input == "")
+                return;
+
+            string[] words = input.Split(' ');
+            bool hideInput = false;
+
+            foreach (ConsoleCommand command in consoleCommands)
+            {
+                if (command.command == words[0])
+                {
+                    words.Skip(1);
+                    hideInput = command.function(words);
+                    consoleCommandExecutedEvent?.Invoke(command);
+                    break;
+                }
+            }
+
+            if (!hideInput)
+                AddToConsole("> " + input);
+
+            inputHistory.Add(input);
+            ClearInput();
         }
     }
 }
