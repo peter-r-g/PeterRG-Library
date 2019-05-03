@@ -21,7 +21,11 @@ namespace PeterRG.PeterRGConsole
 
         public Console()
         {
+            if (instance != null)
+                return;
 
+            consoleInterface = new ConsoleUI();
+            instance = this;
         }
 
     }
