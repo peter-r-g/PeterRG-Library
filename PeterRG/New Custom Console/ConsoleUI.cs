@@ -146,5 +146,9 @@ namespace PeterRG.CustomConsole
             return consoleLog.Lines;
         }
 
+        public void WipeConsoleLog()
+        {
+            consoleLog.Lines = new string[0];
+        }
     }
 }
