@@ -65,7 +65,7 @@ namespace PeterRG.CustomConsole
             consoleInput.Focus();
         }
 
-        private void ConsoleLogTextChanged(object sender, EventArgs args)
+        public virtual void ConsoleLogTextChanged(object sender, EventArgs args)
         {
             if (autoScrollConsoleLog)
             {
@@ -77,7 +77,7 @@ namespace PeterRG.CustomConsole
                 consoleLog.Lines = (string[])consoleLog.Lines.Skip(1);
         }
 
-        private void ConsoleInputKeyUp(object sender, KeyEventArgs args)
+        public virtual void ConsoleInputKeyUp(object sender, KeyEventArgs args)
         {
             if (args.KeyCode == Keys.Up)
             {
@@ -97,7 +97,7 @@ namespace PeterRG.CustomConsole
             }
         }
 
-        private void SendConsoleInputClicked(object sender, EventArgs args)
+        public virtual void SendConsoleInputClicked(object sender, EventArgs args)
         {
             string input = GetConsoleInput();
 
