@@ -48,6 +48,7 @@
     <Compile Include="Custom Console\Console.cs" />
     <Compile Include="Custom Console\ConsoleCommand.cs" />
     <Compile Include="Data Types\Vector2.cs" />
+    <Compile Include="FileHandler.cs" />
     <Compile Include="HttpRequests.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="New Custom Console\Console.cs" />
