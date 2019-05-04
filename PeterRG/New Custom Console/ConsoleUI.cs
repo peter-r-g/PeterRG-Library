@@ -67,19 +67,19 @@ namespace PeterRG.CustomConsole
 
         public virtual void ConsoleLogTextChanged(object sender, EventArgs args)
         {
-            if (autoScrollConsoleLog)
+            /*if (autoScrollConsoleLog)
             {
                 consoleLog.SelectionStart = consoleLog.Text.Length;
                 consoleLog.ScrollToCaret();
             }
 
             if (consoleLog.Lines.Length > consoleLogMaxLines)
-                consoleLog.Lines = (string[])consoleLog.Lines.Skip(1);
+                consoleLog.Lines = (string[])consoleLog.Lines.Skip(1);*/
         }
 
         public virtual void ConsoleInputKeyUp(object sender, KeyEventArgs args)
         {
-            if (args.KeyCode == Keys.Up)
+            /*if (args.KeyCode == Keys.Up)
             {
                 if (inputIndex < inputHistory.Count)
                 {
@@ -94,12 +94,12 @@ namespace PeterRG.CustomConsole
                     inputIndex--;
                     consoleInput.Text = inputHistory[inputIndex - 1];
                 }
-            }
+            }*/
         }
 
         public virtual void SendConsoleInputClicked(object sender, EventArgs args)
         {
-            string input = GetConsoleInput();
+            /*string input = GetConsoleInput();
 
             if (input == "")
                 return;
@@ -122,7 +122,7 @@ namespace PeterRG.CustomConsole
                 AddToConsole("> " + input);
 
             inputHistory.Add(input);
-            ClearInput();
+            ClearInput();*/
         }
     }
 }
