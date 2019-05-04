@@ -132,5 +132,14 @@ namespace PeterRG.CustomConsole
             inputHistory.Add(input);
             ClearInput();*/
         }
+
+        public void AddToConsoleLog(string text, bool newLine)
+        {
+            if (newLine)
+                consoleLog.AppendText(text + Environment.NewLine);
+            else
+                consoleLog.AppendText(text);
+        }
+
     }
 }
