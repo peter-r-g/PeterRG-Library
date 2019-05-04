@@ -20,6 +20,9 @@ namespace PeterRG.CustomConsole
         private TextBox consoleInput;
         private Button consoleSendInput;
 
+        public delegate void OnConsoleLogCleared(string consoleTex);
+        public event OnConsoleLogCleared onConsoleLogClearedEvent;
+
 
         public ConsoleUI()
         {
