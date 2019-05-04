@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Linq;
 
-namespace PeterRG.CustomConsole
+namespace PeterRG.OldCustomConsole
 {
     class Console
     {

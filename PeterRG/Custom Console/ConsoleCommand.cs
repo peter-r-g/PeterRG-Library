@@ -7,7 +7,7 @@
 
 using System;
 
-namespace PeterRG.CustomConsole
+namespace PeterRG.OldCustomConsole
 {
     class ConsoleCommand
     {
