@@ -14,17 +14,15 @@ using PeterRG.CustomConsole;
 
 namespace PeterRG.PeterRGConsole
 {
-    class Console
+    class Console : ConsoleUI
     {
         public static Console instance { get; private set; }
-        private static ConsoleUI consoleInterface;
 
-        public Console()
+        public Console() : base()
         {
             if (instance != null)
                 return;
 
-            consoleInterface = new ConsoleUI();
             instance = this;
         }
 

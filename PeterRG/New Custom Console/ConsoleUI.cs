@@ -15,8 +15,6 @@ namespace PeterRG.CustomConsole
 {
     class ConsoleUI
     {
-        public static ConsoleUI instance { get; private set; }
-
         public Form consoleWindow;
         private RichTextBox consoleLog;
         private TextBox consoleInput;
@@ -25,9 +23,6 @@ namespace PeterRG.CustomConsole
 
         public ConsoleUI()
         {
-            if (instance != null)
-                return;
-
             consoleWindow = new Form();
             consoleLog = new RichTextBox();
             consoleInput = new TextBox();
@@ -39,7 +34,7 @@ namespace PeterRG.CustomConsole
             consoleLog.Left = 5;
             consoleLog.Top = 5;
             consoleLog.ReadOnly = true;
-            consoleLog.TextChanged += ConsoleLogTextChanged;
+            //consoleLog.TextChanged += ConsoleLogTextChanged;
 
             consoleInput.Name = "consoleInput";
             consoleInput.ClientSize = new Size(710, 30);
@@ -69,21 +64,19 @@ namespace PeterRG.CustomConsole
             consoleWindow.PerformLayout();
             consoleWindow.Show();
             consoleInput.Focus();
-
-            instance = this;
         }
 
-        public virtual void ConsoleLogTextChanged(object sender, EventArgs args)
+        /*public virtual void ConsoleLogTextChanged(object sender, EventArgs args)
         {
-            /*if (autoScrollConsoleLog)
+            if (autoScrollConsoleLog)
             {
                 consoleLog.SelectionStart = consoleLog.Text.Length;
                 consoleLog.ScrollToCaret();
             }
 
             if (consoleLog.Lines.Length > consoleLogMaxLines)
-                consoleLog.Lines = (string[])consoleLog.Lines.Skip(1);*/
-        }
+                consoleLog.Lines = (string[])consoleLog.Lines.Skip(1);
+        }*/
 
         public virtual void ConsoleInputKeyUp(object sender, KeyEventArgs args)
         {
