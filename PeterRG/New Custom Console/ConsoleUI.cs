@@ -141,5 +141,10 @@ namespace PeterRG.CustomConsole
                 consoleLog.AppendText(text);
         }
 
+        public string[] GetConsoleLog()
+        {
+            return consoleLog.Lines;
+        }
+
     }
 }
