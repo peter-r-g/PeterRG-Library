@@ -23,6 +23,8 @@ namespace PeterRG.CustomConsole
         public delegate void OnConsoleLogCleared(string consoleTex);
         public event OnConsoleLogCleared onConsoleLogClearedEvent;
 
+        public delegate void OnConsoleLogTextAdded(string text);
+        public event OnConsoleLogTextAdded onConsoleLogTextAddedEvent;
 
         public ConsoleUI()
         {
