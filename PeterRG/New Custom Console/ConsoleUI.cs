@@ -15,6 +15,8 @@ namespace PeterRG.CustomConsole
 {
     class ConsoleUI
     {
+        public static ConsoleUI instance { get; private set; }
+
         public Form consoleWindow;
         public RichTextBox consoleLog;
         public TextBox consoleInput;
@@ -22,6 +24,9 @@ namespace PeterRG.CustomConsole
 
         public ConsoleUI()
         {
+            if (instance != null)
+                return;
+
             consoleWindow = new Form();
             consoleLog = new RichTextBox();
             consoleInput = new TextBox();
@@ -63,6 +68,8 @@ namespace PeterRG.CustomConsole
             consoleWindow.PerformLayout();
             consoleWindow.Show();
             consoleInput.Focus();
+
+            instance = this;
         }
 
         public virtual void ConsoleLogTextChanged(object sender, EventArgs args)
