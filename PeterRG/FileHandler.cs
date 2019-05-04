@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Console_Test_Enviroment
+namespace PeterRG.IO
 {
     class FileHandler
     {
