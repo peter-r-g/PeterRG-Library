@@ -18,9 +18,10 @@ namespace PeterRG.CustomConsole
         public static ConsoleUI instance { get; private set; }
 
         public Form consoleWindow;
-        public RichTextBox consoleLog;
-        public TextBox consoleInput;
-        public Button consoleSendInput;
+        private RichTextBox consoleLog;
+        private TextBox consoleInput;
+        private Button consoleSendInput;
+
 
         public ConsoleUI()
         {
